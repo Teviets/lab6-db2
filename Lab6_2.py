@@ -57,30 +57,19 @@ def createInGenreRelation(tx, movie_title, genre_name):
            movie_title=movie_title, genre_name=genre_name)
 
 def createGraph(tx):
-    # Crear nodos de personas
     createPerson(tx, "Keanu Reeves", 6384, "1964-09-02", None, "Keanu Charles Reeves is a Canadian actor, musician, film producer and director.", "keanu.jpg")
     createPerson(tx, "Lana Wachowski", 7879, "1965-06-21", None, "Lana Wachowski is an American film director, screenwriter, and producer.", "lana.jpg")
     createUser(tx, "User1", 1)
-    # Crear nodos de actores
     createActor(tx, "Keanu Reeves", 6384, "1964-09-02", None, "Keanu Charles Reeves is a Canadian actor, musician, film producer and director.", "keanu.jpg")
-
-    # Crear nodos de directores
     createDirector(tx, "Lana Wachowski", 7879, "1965-06-21", None, "Lana Wachowski is an American film director, screenwriter, and producer.", "lana.jpg")
-
-    # Crear nodos de películas y géneros (ya definidos anteriormente)
     createMovie(tx, "The Matrix", 603, "1999-03-31", 8.7, 603, 1999, 603, 136, ["USA", "Australia"], 17813333, "http://www.whatisthematrix.com", 463517383, "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.", "matrix.jpg", 63000000, ["English"])
 
     createGenre(tx, "Action")
     createGenre(tx, "Sci-Fi")
-
-    # Establecer relaciones entre personas (actores y directores) y películas
     createActedInRelation(tx, "Keanu Reeves", "The Matrix", "Neo")
     createDirectedRelation(tx, "Lana Wachowski", "The Matrix", "Director")
-
-    # Establecer relaciones entre usuarios y películas
     createRatedRelation(tx, "User1", "The Matrix", 5, 1642034512)
 
-    # Establecer relaciones entre películas y géneros
     createInGenreRelation(tx, "The Matrix", "Action")
     createInGenreRelation(tx, "The Matrix", "Sci-Fi")
 
